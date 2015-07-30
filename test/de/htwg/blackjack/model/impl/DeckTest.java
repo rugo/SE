@@ -70,4 +70,8 @@ public class DeckTest extends TestCase {
             this.deck.getNextCard();
         }
     }
+
+    public void testToString() throws Exception {
+
+    }
 }

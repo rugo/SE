@@ -10,7 +10,7 @@ import java.util.List;
  * Created by ||USER|| on ||DATE||.
  */
 // TODO: Check parameters
-public class Table implements ITable {
+public final class Table implements ITable {
     private List<IDeck> decks;
     private List<IPlayer> players;
 

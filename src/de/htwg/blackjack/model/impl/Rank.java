@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by ||USER|| on ||DATE||.
  */
-public class Rank implements IRank {
+public final class Rank implements IRank {
     private final String name;
     private final List<Integer> values;
     private final int unicodeBlockPosition;

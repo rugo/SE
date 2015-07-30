@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by ||USER|| on ||DATE||.
  */
-public class Card implements ICard {
+public final class Card implements ICard {
     private final IColor color;
     private final IRank rank;
     private static final int UNICODE_CARD_BASE = 0x1F000;
@@ -42,6 +42,6 @@ public class Card implements ICard {
 
     @Override
     public String toString() {
-        return this.getUnicodeSymbol() + " " + this.getColor() + " " + this.getRank();
+        return this.getColor() + " " + this.getRank();
     }
 }

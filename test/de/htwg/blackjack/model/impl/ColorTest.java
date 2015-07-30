@@ -11,4 +11,8 @@ public class ColorTest extends TestCase {
     public void testGetUnicodeBlockPosition() throws Exception {
         assertEquals(this.color.getUnicodeBlockPosition(), 0xA);
     }
+
+    public void testToString() throws Exception {
+
+    }
 }

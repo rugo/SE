@@ -30,4 +30,8 @@ public class RankTest extends TestCase {
             this.rank.getValues().contains(i);
         }
     }
+
+    public void testToString() throws Exception {
+
+    }
 }
