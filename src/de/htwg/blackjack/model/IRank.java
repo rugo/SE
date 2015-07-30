@@ -14,7 +14,7 @@ public interface IRank {
      * As documented here: https://en.wikipedia.org/wiki/Playing_cards_in_Unicode#Block
      * @return Last HEX digit for unicode char of card.
      */
-    char getUnicodeBlockPosition();
+    int getUnicodeBlockPosition();
 
     /**
      * Returns the name of the rank.

@@ -10,5 +10,5 @@ public interface IColor {
      * As documented here: https://en.wikipedia.org/wiki/Playing_cards_in_Unicode#Block
      * @return Second last HEX digit for unicode char of card.
      */
-    char getUnicodeBlockPosition();
+    int getUnicodeBlockPosition();
 }

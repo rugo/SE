@@ -7,15 +7,15 @@ import de.htwg.blackjack.model.IColor;
  */
 public final class Color implements IColor{
     private final String name;
-    private final char unicodeBlockPosition;
+    private final int unicodeBlockPosition;
 
-    public Color(String name, char unicodeBlockPosition) {
+    public Color(String name, int unicodeBlockPosition) {
         this.name = name;
         this.unicodeBlockPosition = unicodeBlockPosition;
     }
 
     @Override
-    public char getUnicodeBlockPosition() {
+    public int getUnicodeBlockPosition() {
         return this.unicodeBlockPosition;
     }
 

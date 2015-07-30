@@ -46,6 +46,11 @@ public final class Deck implements IDeck {
     }
 
     @Override
+    public int cardsLeft() {
+        return this.cards.size();
+    }
+
+    @Override
     public String toString() {
         return "Deck with " + this.cards.size() + " left.";
     }

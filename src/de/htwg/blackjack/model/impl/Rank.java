@@ -2,6 +2,7 @@ package de.htwg.blackjack.model.impl;
 
 import de.htwg.blackjack.model.IRank;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -10,11 +11,11 @@ import java.util.List;
 public class Rank implements IRank {
     private final String name;
     private final List<Integer> values;
-    private final char unicodeBlockPosition;
+    private final int unicodeBlockPosition;
 
-    public Rank(String name, List<Integer> values, char unicodeBlockPosition) {
+    public Rank(String name, int unicodeBlockPosition, Integer... values) {
         this.name = name;
-        this.values = values;
+        this.values = Arrays.asList(values);
         this.unicodeBlockPosition = unicodeBlockPosition;
     }
 
@@ -24,7 +25,7 @@ public class Rank implements IRank {
     }
 
     @Override
-    public char getUnicodeBlockPosition() {
+    public int getUnicodeBlockPosition() {
         return unicodeBlockPosition;
     }
 
