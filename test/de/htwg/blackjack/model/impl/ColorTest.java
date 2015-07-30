@@ -13,6 +13,6 @@ public class ColorTest extends TestCase {
     }
 
     public void testToString() throws Exception {
-
+        assertEquals(this.color.toString(), "SPADE");
     }
 }

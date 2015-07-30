@@ -32,6 +32,6 @@ public class RankTest extends TestCase {
     }
 
     public void testToString() throws Exception {
-
+        assertEquals(this.rank.toString(), "ASS");
     }
 }

@@ -72,6 +72,6 @@ public class DeckTest extends TestCase {
     }
 
     public void testToString() throws Exception {
-
+        assertEquals(this.deck.toString(), "Deck with 56 cards left");
     }
 }
