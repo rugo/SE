@@ -17,4 +17,10 @@ public interface IDeck {
      * @return The next card.
      */
     ICard getNextCard();
+
+    /**
+     * Checks if the deck has a card left.
+     * @return True if a card is left, false if deck is empty
+     */
+    boolean hasNextCard();
 }

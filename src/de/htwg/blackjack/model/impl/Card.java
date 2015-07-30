@@ -10,9 +10,9 @@ import java.util.List;
  * Created by ||USER|| on ||DATE||.
  */
 public class Card implements ICard {
-    private IColor color;
-    private IRank rank;
-    private static int UNICODE_CARD_BASE = 0x1F000;
+    private final IColor color;
+    private final IRank rank;
+    private static final int UNICODE_CARD_BASE = 0x1F000;
 
     public Card(IColor color, IRank rank) {
         this.color = color;
