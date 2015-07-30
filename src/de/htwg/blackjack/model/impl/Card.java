@@ -12,6 +12,7 @@ import java.util.List;
 public class Card implements ICard {
     private IColor color;
     private IRank rank;
+    private static int UNICODE_CARD_BASE = 0x1F000;
 
     public Card(IColor color, IRank rank) {
         this.color = color;
@@ -29,11 +30,18 @@ public class Card implements ICard {
 
     @Override
     public char getUnicodeSymbol() {
-        return 0;
+        return (char) (this.UNICODE_CARD_BASE +
+                this.getColor().getUnicodeBlockPosition() +
+                this.getRank().getUnicodeBlockPosition());
     }
 
     @Override
     public List<Integer> getValues() {
         return this.rank.getValues();
+    }
+
+    @Override
+    public String toString() {
+        return this.getUnicodeSymbol() + " " + this.getColor() + " " + this.getRank();
     }
 }
