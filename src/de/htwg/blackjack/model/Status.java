@@ -5,5 +5,8 @@ package de.htwg.blackjack.model;
  */
 public enum Status {
     HIT,
-    STAND
+    STAND,
+    BUSTED,
+    DOUBLE,
+    ENTRY
 }

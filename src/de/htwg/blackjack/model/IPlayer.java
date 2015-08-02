@@ -4,7 +4,7 @@ package de.htwg.blackjack.model;
  * Created by ||USER|| on ||DATE||.
  */
 
-import java.util.List;
+import java.util.Map;
 
 public interface IPlayer {
     /**
@@ -15,9 +15,9 @@ public interface IPlayer {
 
     /**
      * Return all cards the player holds.
-     * @return All cards of the player in the round.
+     * @return All cards the player holds (with given value) in the current round.
      */
-    List<ICard> getCards();
+    Map<ICard, Integer> getCards();
 
     /**
      * Returns the overall value of the cards the player has in the round.
@@ -27,9 +27,10 @@ public interface IPlayer {
 
     /**
      * Adds new card to the players cards.
-     * @param card Card to give to the player.
+     * @param card Card to give to the player
+     * @param value Value the player gave the card (e.g. an ass can be 1 or 11).
      */
-    void addNewCard(ICard card);
+    void addNewCard(ICard card, Integer value);
 
     /**
      * Sets the status of the player.
@@ -43,4 +44,17 @@ public interface IPlayer {
      * @return Status of the player.
      */
     Status getStatus();
+
+    /**
+     * Gets the amount of money the player has left.
+     * @return Amount of money player has.
+     */
+    public int getAmountOfMoney();
+
+    /**
+     * Place a bet.
+     * @param amount Amount of money you want to bet.
+     * @return New amount of money.
+     */
+    public int reduceMoney(int amount);
 }

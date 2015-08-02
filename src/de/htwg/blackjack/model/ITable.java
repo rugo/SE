@@ -1,6 +1,8 @@
 package de.htwg.blackjack.model;
 
 
+import java.util.List;
+
 public interface ITable {
     /**
      * Returns the amount of decks used on this table.
@@ -15,6 +17,12 @@ public interface ITable {
     void addPlayer(IPlayer newPlayer);
 
     /**
+     * Adds a list of players to the table.
+     * @param newPlayers Players to add.
+     */
+    void addPlayers(List<IPlayer> newPlayers);
+
+    /**
      * Removes player from the table.
      * @param player Player to remove.
      * @return True if player was not on the table.
@@ -22,14 +30,30 @@ public interface ITable {
     boolean removePlayer(IPlayer player);
 
     /**
-     * Makes the player hit... He doesn't want cards anymore.
-     * @param player Player that wants to hit.
+     * Get new decks on the table.
+     * @param amount Amount of decks.
+     * @param ranks Ranks in the decks.
+     * @param colors Colors in the decks.
      */
-    void hit(IPlayer player);
+    void initDecks(int amount, List<IRank> ranks, List<IColor> colors);
 
     /**
-     * Makes the player stand... He wants a new card.
-     * @param player The player that wants to stand.
+     * Gets bet sum of a player on the table.
+     * @param player Player with bet
+     * @return Bet sum of the player.
      */
-    void stand(IPlayer player);
+    Integer getBet(IPlayer player);
+
+    /**
+     * Places a bet of a player on the table.
+     * @param player Player to bet.
+     * @param amount Amount og the bet.
+     */
+    void placeBet(IPlayer player, Integer amount);
+
+    /**
+     * Fetches a new card from the stack of decks.
+     * @return A card from the stack.
+     */
+    ICard getNewCard();
 }

@@ -6,6 +6,8 @@ import junit.framework.TestCase;
  * Created by ||USER|| on ||DATE||.
  */
 public class TableTest extends TestCase {
+    private Table table;
+    //private List<Player> players;
 
     public void setUp() throws Exception {
         super.setUp();
