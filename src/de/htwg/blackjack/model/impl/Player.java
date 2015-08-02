@@ -61,11 +61,16 @@ public final class Player implements IPlayer {
 
     @Override
     public int getAmountOfMoney() {
-        return 0;
+        return this.money;
     }
 
     @Override
     public int reduceMoney(int amount) {
-        return 0;
+        int moneyT = this.money - amount;
+        if (moneyT < 0) {
+            throw new IllegalArgumentException("Player doesn't have enough money!");
+        }
+        this.money = moneyT;
+        return this.money;
     }
 }

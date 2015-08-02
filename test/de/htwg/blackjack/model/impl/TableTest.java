@@ -7,14 +7,21 @@ import junit.framework.TestCase;
  */
 public class TableTest extends TestCase {
     private Table table;
-    //private List<Player> players;
-
     public void setUp() throws Exception {
         super.setUp();
+        // this.table = new Table(8, )
+
+    }
+
+    public void testInitDecks() throws Exception {
 
     }
 
     public void testGetAmountOfDecks() throws Exception {
+
+    }
+
+    public void testAddPlayers() throws Exception {
 
     }
 
@@ -26,11 +33,15 @@ public class TableTest extends TestCase {
 
     }
 
-    public void testHit() throws Exception {
+    public void testGetNewCard() throws Exception {
 
     }
 
-    public void testStand() throws Exception {
+    public void testPlaceBet() throws Exception {
+
+    }
+
+    public void testGetBet() throws Exception {
 
     }
 }

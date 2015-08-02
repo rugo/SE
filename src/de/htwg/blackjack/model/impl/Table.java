@@ -10,7 +10,7 @@ import java.util.*;
 // TODO: Check parameters
 public final class Table implements ITable {
     private final List<IDeck> decks;
-    private final Map<IPlayer, Integer> bets; // todo: make map only
+    private final Map<IPlayer, Integer> bets;
 
 
     public  Table(int amountOfDecks, List<IPlayer> players, List<IRank> ranks, List<IColor> colors) {
