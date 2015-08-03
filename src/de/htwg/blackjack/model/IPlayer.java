@@ -49,12 +49,12 @@ public interface IPlayer {
      * Gets the amount of money the player has left.
      * @return Amount of money player has.
      */
-    public int getAmountOfMoney();
+    int getAmountOfMoney();
 
     /**
      * Place a bet.
      * @param amount Amount of money you want to bet.
      * @return New amount of money.
      */
-    public int reduceMoney(int amount);
+    int reduceMoney(int amount);
 }
