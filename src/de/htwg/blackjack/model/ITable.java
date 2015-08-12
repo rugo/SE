@@ -23,6 +23,12 @@ public interface ITable {
     void addPlayers(List<IPlayer> newPlayers);
 
     /**
+     * Delivers the amount of players on the table.
+     * @return Amount of players
+     */
+    int getAmountOfPlayers();
+
+    /**
      * Removes player from the table.
      * @param player Player to remove.
      * @return True if player was not on the table.

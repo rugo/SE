@@ -40,6 +40,11 @@ public final class Table implements ITable {
     }
 
     @Override
+    public int getAmountOfPlayers() {
+        return this.bets.keySet().size();
+    }
+
+    @Override
     public void addPlayer(IPlayer newPlayer) {
         this.bets.put(newPlayer, 0);
     }
