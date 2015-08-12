@@ -4,10 +4,7 @@ import de.htwg.blackjack.model.ICard;
 import de.htwg.blackjack.model.IPlayer;
 import de.htwg.blackjack.model.Status;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by ||USER|| on ||DATE||.
@@ -21,7 +18,8 @@ public final class Player implements IPlayer {
     public Player(String name, Integer money) {
         this.name = name;
         this.money = money;
-        this.cards = new TreeMap<>();
+        this.cards = new HashMap<>();
+        this.status = Status.ENTRY;
     }
 
     @Override

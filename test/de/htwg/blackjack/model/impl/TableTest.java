@@ -101,6 +101,6 @@ public class TableTest extends TestCase {
 
     public void testGetBet() throws Exception {
         this.table.placeBet(this.hans, 123);
-        assertEquals(this.table.getBet(this.hans), Integer.valueOf(50));
+        assertEquals(this.table.getBet(this.hans), Integer.valueOf(123));
     }
 }

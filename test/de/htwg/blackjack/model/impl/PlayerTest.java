@@ -38,7 +38,9 @@ public class PlayerTest extends TestCase {
     public void testGetCards() throws Exception {
         assertEquals(this.player.getCards().size(), 0);
         this.player.addNewCard(this.cards[0], this.cards[0].getValues().get(0));
-        assertEquals(this.player.getCards().get(0), this.cards[0]);
+        assert this.player.getCards().containsKey(this.cards[0]);
+        assertEquals(this.player.getCards().get(this.cards[0]),
+                this.cards[0].getValues().get(0));
     }
 
     public void testGetCardsValue() throws Exception {
@@ -49,7 +51,7 @@ public class PlayerTest extends TestCase {
 
     public void testAddNewCard() throws Exception {
         this.player.addNewCard(this.cards[1], 10);
-        assertEquals(this.player.getCards().get(0), this.cards[1]);
+        assert this.player.getCards().containsKey(this.cards[1]);
     }
 
     public void testGetAmountOfMoney() throws Exception {

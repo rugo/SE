@@ -9,13 +9,12 @@ import java.util.*;
  */
 // TODO: Check parameters
 public final class Table implements ITable {
-    private final List<IDeck> decks;
+    private List<IDeck> decks;
     private final Map<IPlayer, Integer> bets;
 
 
     public  Table(int amountOfDecks, List<IPlayer> players, List<IRank> ranks, List<IColor> colors) {
-        this.decks = new ArrayList<>();
-        this.bets = new TreeMap<>();
+        this.bets = new HashMap<>();
 
         this.addPlayers(players);
         this.initDecks(amountOfDecks, ranks, colors);
@@ -23,6 +22,7 @@ public final class Table implements ITable {
 
     @Override
     public void initDecks(int amount, List<IRank> ranks, List<IColor> colors) {
+        this.decks = new ArrayList<>();
         for (int i = 0; i < amount; i++){
             this.decks.add(new Deck(ranks, colors));
         }
