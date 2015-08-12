@@ -19,7 +19,6 @@ public final class Player implements IPlayer {
         this.name = name;
         this.money = money;
         this.cards = new HashMap<>();
-        this.status = Status.ENTRY;
     }
 
     @Override
@@ -42,6 +41,13 @@ public final class Player implements IPlayer {
         return cards;
     }
 
+    public String getCardsString() {
+        StringBuilder sb = new StringBuilder();
+        for (ICard card: this.cards.keySet()) {
+            sb.append("[").append(card.toString()).append("] ");
+        }
+        return sb.toString();
+    }
     @Override
     public int getCardsValue() {
         Integer value = 0;
@@ -70,5 +76,9 @@ public final class Player implements IPlayer {
         }
         this.money = moneyT;
         return this.money;
+    }
+
+    public void addMoney(int amount) {
+        this.money += amount;
     }
 }

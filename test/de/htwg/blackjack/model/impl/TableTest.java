@@ -1,8 +1,6 @@
 package de.htwg.blackjack.model.impl;
 
-import de.htwg.blackjack.model.IColor;
-import de.htwg.blackjack.model.IPlayer;
-import de.htwg.blackjack.model.IRank;
+import de.htwg.blackjack.model.*;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
@@ -50,13 +48,9 @@ public class TableTest extends TestCase {
         this.colors.add(new Color("DIAMONDS", 0xC0));
         this.colors.add(new Color("CLUBS", 0xD0));
 
-        this.table = new Table(8, this.players, this.ranks, this.colors);
+        IDeckFactory df = new DeckFactory();
+        this.table = new Table(this.players, df.createFrenchDeck(8));
 
-    }
-
-    public void testInitDecks() throws Exception {
-        this.table.initDecks(2, this.ranks, this.colors);
-        assertEquals(this.table.getAmountOfDecks(), 2);
     }
 
     public void testGetAmountOfDecks() throws Exception {
@@ -89,7 +83,10 @@ public class TableTest extends TestCase {
         col.add(new Color("Schippe", 0));
         ranks.add(new Rank("Bube", 0, 10));
         ranks.add(new Rank("Ass", 0, 11, 1));
-        this.table.initDecks(1, ranks, col);
+        IDeck deck = new Deck(ranks, col);
+        List<IDeck> decks = new ArrayList<>();
+        decks.add(deck);
+        table = new Table(this.players, decks);
         assertEquals(this.table.getNewCard().getColor(), col.get(0));
         assert ranks.contains(this.table.getNewCard().getRank());
     }

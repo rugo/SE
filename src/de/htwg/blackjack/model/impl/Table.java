@@ -13,19 +13,11 @@ public final class Table implements ITable {
     private final Map<IPlayer, Integer> bets;
 
 
-    public  Table(int amountOfDecks, List<IPlayer> players, List<IRank> ranks, List<IColor> colors) {
+    public  Table(List<IPlayer> players, List<IDeck> decks) {
         this.bets = new HashMap<>();
 
         this.addPlayers(players);
-        this.initDecks(amountOfDecks, ranks, colors);
-    }
-
-    @Override
-    public void initDecks(int amount, List<IRank> ranks, List<IColor> colors) {
-        this.decks = new ArrayList<>();
-        for (int i = 0; i < amount; i++){
-            this.decks.add(new Deck(ranks, colors));
-        }
+        this.decks = decks;
     }
 
     @Override

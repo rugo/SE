@@ -36,14 +36,6 @@ public interface ITable {
     boolean removePlayer(IPlayer player);
 
     /**
-     * Get new decks on the table.
-     * @param amount Amount of decks.
-     * @param ranks Ranks in the decks.
-     * @param colors Colors in the decks.
-     */
-    void initDecks(int amount, List<IRank> ranks, List<IColor> colors);
-
-    /**
      * Gets bet sum of a player on the table.
      * @param player Player with bet
      * @return Bet sum of the player.

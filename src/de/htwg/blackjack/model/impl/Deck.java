@@ -4,6 +4,7 @@ import de.htwg.blackjack.model.ICard;
 import de.htwg.blackjack.model.IColor;
 import de.htwg.blackjack.model.IDeck;
 import de.htwg.blackjack.model.IRank;
+import de.htwg.blackjack.model.impl.Card;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -25,6 +26,7 @@ public final class Deck implements IDeck {
     }
 
     private ICard popCard() {
+        this.shuffle();
         ICard card = this.cards.get(0);
         this.cards.remove(0);
         return card;

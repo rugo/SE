@@ -26,6 +26,12 @@ public interface IPlayer {
     int getCardsValue();
 
     /**
+     * Calculates the String for all cards of the player.
+     * @return All cards of the player in one string.
+     */
+    String getCardsString();
+
+    /**
      * Adds new card to the players cards.
      * @param card Card to give to the player
      * @param value Value the player gave the card (e.g. an ass can be 1 or 11).
@@ -57,4 +63,10 @@ public interface IPlayer {
      * @return New amount of money.
      */
     int reduceMoney(int amount);
+
+    /**
+     * Add money to the player.
+     * @param amount How much to add to players account.
+     */
+    void addMoney(int amount);
 }
