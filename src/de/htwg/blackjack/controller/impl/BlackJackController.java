@@ -46,8 +46,8 @@ public class BlackJackController extends Observable implements IBlackJackControl
 
     @Override
     public String getTableInfos() {
-        String msg =  String.format("The dealers has cards: %s [%d]" + NEWLINE
-                + "Your Cards are: %s [%d]",
+        String msg =  String.format("The dealers has cards: %s (Value: %d)" + NEWLINE
+                + "Your Cards are: %s (Value :%d)",
                 this.dealer.getCardsString(),
                 this.dealer.getCardsValue(),
                 this.user.getCardsString(),
