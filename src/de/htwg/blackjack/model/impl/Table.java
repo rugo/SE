@@ -13,10 +13,10 @@ public final class Table implements ITable {
     private final Map<IPlayer, Integer> bets;
 
 
-    public  Table(List<IPlayer> players, List<IDeck> decks) {
+    public  Table(List<IDeck> decks, IPlayer... players) {
         this.bets = new HashMap<>();
 
-        this.addPlayers(players);
+        this.addPlayers(Arrays.asList(players));
         this.decks = decks;
     }
 

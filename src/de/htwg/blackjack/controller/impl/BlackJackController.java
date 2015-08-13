@@ -27,6 +27,8 @@ public class BlackJackController extends Observable implements IBlackJackControl
      */
     private final double WIN_FACTOR = 1.5;
 
+    private final static String CURRENCY_SIGN = "€";
+
     private static final String NEWLINE = System.getProperty("line.separator");
 
     private final Random rnd;
@@ -45,17 +47,22 @@ public class BlackJackController extends Observable implements IBlackJackControl
     // TODO: dep injection
 
     @Override
-    public String getTableInfos() {
-        String msg =  String.format("The dealers has cards: %s (Value: %d)" + NEWLINE
-                + "Your Cards are: %s (Value :%d)",
-                this.dealer.getCardsString(),
-                this.dealer.getCardsValue(),
-                this.user.getCardsString(),
-                this.user.getCardsValue()
-        );
+    public String getTableInfoString() {
+        String msg;
         if (!this.message.isEmpty()) {
-            msg += NEWLINE + this.message;
+            msg = this.message;
             this.message = "";
+        } else {
+            msg = String.format("The dealers has cards: %s (Value: %d)" + NEWLINE
+                            + "%s [%d%s] Cards are: %s (Value :%d)",
+                    this.dealer.getCardsString(),
+                    this.dealer.getCardsValue(),
+                    this.user.getName(),
+                    this.user.getAmountOfMoney(),
+                    CURRENCY_SIGN,
+                    this.user.getCardsString(),
+                    this.user.getCardsValue()
+            );
         }
         return msg;
     }
@@ -64,13 +71,15 @@ public class BlackJackController extends Observable implements IBlackJackControl
     public void createGame(String playerName, int playerMoney) {
         this.user = new Player(playerName, playerMoney);
         this.dealer = new Player("Dealer", 0);
-        List<IPlayer> players = new ArrayList<>();
-        players.add(this.user);
-        players.add(this.dealer);
-        this.table = new Table(players,
-                deckFactory.createFrenchDeck(STD_AMOUNT_OF_DECKS)
+
+        this.table = new Table(
+                deckFactory.createFrenchDeck(STD_AMOUNT_OF_DECKS),
+                this.user,
+                this.dealer
         );
     }
+
+
 
     /**
      * The card ass can have two different values (1 or 11).
@@ -93,13 +102,15 @@ public class BlackJackController extends Observable implements IBlackJackControl
     private void pullCard(IPlayer player) {
         ICard newCard = this.table.getNewCard();
         player.addNewCard(newCard, chooseCardValue(player, newCard));
+        notifyObservers();
     }
 
     @Override
     public void userDouble() {
         this.table.placeBet(this.user, this.table.getBet(this.user));
-        this.userHit();
+        this.hit(this.user);
         this.userStand();
+        notifyObservers();
     }
 
     @Override
@@ -112,12 +123,14 @@ public class BlackJackController extends Observable implements IBlackJackControl
         if (!handleStatus(player)) {
             restartGame();
         }
-        notifyObservers();
     }
 
     @Override
     public void userStand() {
-        runDealer();
+        while(this.dealer.getCardsValue() < this.user.getCardsValue()) {
+            runDealer();
+            notifyObservers();
+        }
     }
 
     @Override
@@ -125,28 +138,50 @@ public class BlackJackController extends Observable implements IBlackJackControl
         this.table.placeBet(this.user, amount);
     }
 
+    @Override
+    public int getPlayerValue() {
+        return 0;
+    }
+
+    @Override
+    public int getDealerValue() {
+        return 0;
+    }
+
+    @Override
+    public List<String> getUserCardImagePaths() {
+        return null;
+    }
+
+    @Override
+    public List<String> getDealerCardImagePaths() {
+        return null;
+    }
+
     private void payoutPlayer(IPlayer player, double factor) {
-        player.addMoney((int) Math.round(this.table.getBet(player) * factor));
+        int newAmount = (int) Math.round(this.table.getBet(player) * factor);
+        this.message = player.getName() + " receives " + newAmount + CURRENCY_SIGN;
+        player.addMoney(newAmount);
     }
 
     private void restartGame() {
-        this.message = "A new round begins.";
-        notifyObservers();
+        this.notifyWithMessage("A new round begins.");
         this.createGame(this.user.getName(), this.user.getAmountOfMoney());
     }
 
+    private void notifyWithMessage(String message) {
+        this.message = message;
+        notifyObservers();
+    }
+
     private void runDealer() {
-        while (this.dealer.getCardsValue() < this.user.getCardsValue()) {
-            this.hit(this.dealer);
-        }
+        this.hit(this.dealer);
         if (this.user.getCardsValue() == this.dealer.getCardsValue()) {
             payoutPlayer(this.user, 1);
-            this.message = "Nobody wins.";
+            this.notifyWithMessage("Nobody wins.");
         } else {
-            this.message = "Dealer wins.";
+            this.notifyWithMessage("Dealer wins.");
         }
-        notifyObservers();
-        restartGame();
     }
 
     /**
@@ -156,19 +191,18 @@ public class BlackJackController extends Observable implements IBlackJackControl
      */
     private boolean handleStatus(IPlayer player) {
         if (player.getCardsValue() == BLACKJACK) {
-            this.message = player.getName() + " has a Blackjack!";
+            this.notifyWithMessage(player.getName() + " has a Blackjack!");
             payoutPlayer(player, WIN_FACTOR);
             notifyObservers();
             return false;
         }
         if (player.getCardsValue() > BLACKJACK) {
-            this.message = player.getName() + " is busted!";
+            this.notifyWithMessage(player.getName() + " is busted!");
             if (player == this.dealer) {
                 payoutPlayer(this.user, WIN_FACTOR);
             }
-            notifyObservers();
             return false;
         }
-        return true;
+        return true; // game not over
     }
 }

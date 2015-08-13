@@ -19,6 +19,7 @@ public final class Player implements IPlayer {
         this.name = name;
         this.money = money;
         this.cards = new HashMap<>();
+        this.setStatus(Status.ENTERED);
     }
 
     @Override

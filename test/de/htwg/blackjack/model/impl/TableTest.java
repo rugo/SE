@@ -49,7 +49,7 @@ public class TableTest extends TestCase {
         this.colors.add(new Color("CLUBS", 0xD0));
 
         IDeckFactory df = new DeckFactory();
-        this.table = new Table(this.players, df.createFrenchDeck(8));
+        this.table = new Table(df.createFrenchDeck(8), this.dealer, this.hans);
 
     }
 
@@ -86,7 +86,7 @@ public class TableTest extends TestCase {
         IDeck deck = new Deck(ranks, col);
         List<IDeck> decks = new ArrayList<>();
         decks.add(deck);
-        table = new Table(this.players, decks);
+        table = new Table(decks, this.players.get(0));
         assertEquals(this.table.getNewCard().getColor(), col.get(0));
         assert ranks.contains(this.table.getNewCard().getRank());
     }
