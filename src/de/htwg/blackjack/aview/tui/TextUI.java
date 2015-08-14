@@ -1,7 +1,6 @@
 package de.htwg.blackjack.aview.tui;
 
 import de.htwg.blackjack.controller.IBlackJackController;
-import de.htwg.blackjack.controller.impl.SecBlackJackController;
 import de.htwg.blackjack.controller.impl.TriBlackJackController;
 import de.htwg.blackjack.util.observer.Event;
 import de.htwg.blackjack.util.observer.IObserver;

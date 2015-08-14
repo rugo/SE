@@ -232,11 +232,11 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
 
     @Override
     public List<String> getUserCardImagePaths() {
-        return null;
+        return new ArrayList<>();
     }
 
     @Override
     public List<String> getDealerCardImagePaths() {
-        return null;
+        return new ArrayList<>();
     }
 }
