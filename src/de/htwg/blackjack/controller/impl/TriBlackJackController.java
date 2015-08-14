@@ -187,17 +187,20 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
     }
 
     private int getBestFittingVal(IPlayer player, ICard card) {
-        int max = BLACKJACK - player.getCardsValue();
-        int bestVal = card.getValues().get(card.getValues().size() - 1);
-        int bestFit = max - bestVal;
+        int playerVal = player.getCardsValue();
+        int score = 21;
+        int pickedVal = card.getValues().get(0);
         for (int val: card.getValues()) {
-            int score = max - val;
-            if (score <= 0 && score < bestFit) {
-                bestFit = score;
-                bestVal = val;
+            int sScore = playerVal + val;
+            if (sScore <= BLACKJACK) {
+                sScore = BLACKJACK - sScore;
+                if (sScore < score) {
+                    score = sScore;
+                    pickedVal = val;
+                }
             }
         }
-        return bestVal;
+        return pickedVal;
     }
 
     @Override
