@@ -8,10 +8,7 @@ import de.htwg.blackjack.model.impl.Table;
 import de.htwg.blackjack.util.observer.Event;
 import de.htwg.blackjack.util.observer.Observable;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by ||USER|| on ||DATE||.
@@ -150,7 +147,7 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
 
     private void assignNewCard(IPlayer player) {
         ICard card = this.table.getNewCard();
-        player.addNewCard(card, card.getValues().get(0)); // TODO: assign best value
+        player.addNewCard(card, getBestFittingVal(player, card)); // TODO: assign best value
     }
 
     private boolean checkBusted(IPlayer player) {
@@ -167,6 +164,20 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
 
     private boolean checkBlackJack(IPlayer player) {
         return this.notifyMessageIfTrue(player.getCardsValue() == 21, player.getName() + " has a BlackJack!");
+    }
+
+    private int getBestFittingVal(IPlayer player, ICard card) {
+        int max = BLACKJACK - player.getCardsValue();
+        int bestVal = card.getValues().get(card.getValues().size() - 1);
+        int bestFit = max - bestVal;
+        for (int val: card.getValues()) {
+            int score = max - val;
+            if (score <= 0 && score < bestFit) {
+                bestFit = score;
+                bestVal = val;
+            }
+        }
+        return bestVal;
     }
 
     @Override
