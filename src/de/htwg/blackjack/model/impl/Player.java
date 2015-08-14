@@ -4,7 +4,8 @@ import de.htwg.blackjack.model.ICard;
 import de.htwg.blackjack.model.IPlayer;
 import de.htwg.blackjack.model.Status;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Created by ||USER|| on ||DATE||.
@@ -18,7 +19,7 @@ public final class Player implements IPlayer {
     public Player(String name, Integer money) {
         this.name = name;
         this.money = money;
-        this.cards = new HashMap<>();
+        this.cards = new LinkedHashMap<>();
         this.setStatus(Status.ENTERED);
     }
 

@@ -143,7 +143,7 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
 
     private void payoutIfNotPlayer(IPlayer player) {
         if (player != this.player) {
-            payoutWinner(player);
+            payoutWinner(this.player);
         }
     }
 
