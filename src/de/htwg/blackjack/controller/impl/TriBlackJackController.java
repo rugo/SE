@@ -66,6 +66,12 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
         this.table = new Table(deckFactory.createFrenchDeck(AMOUNT_OF_DECKS), this.dealer, this.player);
     }
 
+    private void initGame() {
+        pullCard(this.dealer);
+        pullCard(this.player);
+        pullCard(this.player);
+    }
+
     /**
      * Sets the status of the player if the action is legal.
      * @param newStatus New status the player should get.
@@ -120,12 +126,25 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
         assignNewCard(player);
         notifyObservers();
         if (checkBlackJack(player)) {
-            payoutWinner(player);
+            payoutIfPlayer(player);
             return false;
         } else if (checkBusted(player)) {
+            payoutIfNotPlayer(player);
             return false;
         }
         return true;
+    }
+
+    private void payoutIfPlayer(IPlayer player) {
+        if (player == this.player) {
+            payoutWinner(player);
+        }
+    }
+
+    private void payoutIfNotPlayer(IPlayer player) {
+        if (player != this.player) {
+            payoutWinner(player);
+        }
     }
 
     private void payoutWinner(IPlayer player) {
@@ -137,6 +156,7 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
     }
 
     private void startNewRound() {
+        notifyWithMessage("A new round started.");
         createGame(player.getName(), player.getAmountOfMoney());
     }
 
@@ -212,11 +232,12 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
     public void userBet(int amount) {
         if (setStatusIfLegal(Status.BETTED)) {
             this.doBet(amount);
+            initGame();
+            notifyObservers();
         }
     }
 
     private void doBet(int amount) {
-        this.player.reduceMoney(amount);
         this.table.placeBet(this.player, amount);
     }
 

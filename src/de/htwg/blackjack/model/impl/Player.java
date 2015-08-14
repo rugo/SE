@@ -12,7 +12,7 @@ import java.util.*;
 public final class Player implements IPlayer {
     private final String name;
     private Status status;
-    private Integer money;
+    private int money;
     private final Map<ICard, Integer> cards;
 
     public Player(String name, Integer money) {
