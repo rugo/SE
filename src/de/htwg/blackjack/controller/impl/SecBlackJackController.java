@@ -67,6 +67,13 @@ public class SecBlackJackController extends Observable implements IBlackJackCont
         );
     }
 
+    private void initGame(){
+        pullCard(this.dealer);
+        this.userHit();
+        this.userHit();
+        this.notifyObservers();
+    }
+
     private void notifyYouCantDo(String cantDo) {
         this.notifyWithMessage("You can't " + cantDo + " now!");
     }
@@ -88,7 +95,7 @@ public class SecBlackJackController extends Observable implements IBlackJackCont
 
     @Override
     public void userHit() {
-        if (this.player.getStatus() != Status.ENTERED &&
+        if (this.player.getStatus() != Status.BETTED &&
                 this.player.getStatus() != Status.HIT) {
             this.notifyYouCantDo("hit");
         } else {
@@ -108,7 +115,7 @@ public class SecBlackJackController extends Observable implements IBlackJackCont
 
     private void doubleBet(IPlayer player) {
         this.bet(player, this.table.getBet(player));
-        this.hit(this.player);
+        this.userHit();
         this.stand();
     }
     private void hit(IPlayer player) {
@@ -144,6 +151,8 @@ public class SecBlackJackController extends Observable implements IBlackJackCont
     public void userBet(int amount) {
         if (this.player.getStatus() == Status.ENTERED) {
             this.bet(this.player, amount);
+            this.player.setStatus(Status.BETTED);
+            initGame();
         } else {
             this.notifyYouCantDo("bet");
         }

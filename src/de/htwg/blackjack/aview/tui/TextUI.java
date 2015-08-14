@@ -2,6 +2,7 @@ package de.htwg.blackjack.aview.tui;
 
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.impl.SecBlackJackController;
+import de.htwg.blackjack.controller.impl.TriBlackJackController;
 import de.htwg.blackjack.util.observer.Event;
 import de.htwg.blackjack.util.observer.IObserver;
 
@@ -16,7 +17,7 @@ public class TextUI implements IObserver {
     private static final Logger LOG = Logger.getLogger("de.htwg.blackjack.aview.tui");
 
     public TextUI(){
-        this.controller = new SecBlackJackController();
+        this.controller = new TriBlackJackController();
         this.controller.addObserver(this);
         this.controller.createGame("Hans", 10000);
     }
