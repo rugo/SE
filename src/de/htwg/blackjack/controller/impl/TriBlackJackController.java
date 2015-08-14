@@ -147,7 +147,7 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
 
     private void assignNewCard(IPlayer player) {
         ICard card = this.table.getNewCard();
-        player.addNewCard(card, getBestFittingVal(player, card)); // TODO: assign best value
+        player.addNewCard(card, getBestFittingVal(player, card));
     }
 
     private boolean checkBusted(IPlayer player) {
