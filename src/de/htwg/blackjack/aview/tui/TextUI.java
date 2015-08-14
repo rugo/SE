@@ -13,6 +13,7 @@ import java.util.logging.Logger;
  */
 public class TextUI implements IObserver {
     private IBlackJackController controller;
+    private static final Logger LOG = Logger.getLogger("de.htwg.blackjack.aview.tui");
 
     public TextUI(){
         this.controller = new SecBlackJackController();
@@ -20,14 +21,12 @@ public class TextUI implements IObserver {
         this.controller.createGame("Hans", 10000);
     }
 
-    private static Logger logger = Logger.getLogger("de.htwg.blackjack.aview.tui");
-
     @Override
     public void update(Event e) {
         if (e != null) {
-            logger.warning(e.getMessage());
+            LOG.warning(e.getMessage());
         } else {
-            logger.info(this.controller.getTableInfoString());
+            LOG.info(this.controller.getTableInfoString());
         }
     }
 
@@ -37,7 +36,7 @@ public class TextUI implements IObserver {
         while (s.hasNext()) {
             processInput(s.next());
         }
-        logger.info("Goodbye");
+        LOG.info("Goodbye");
     }
 
     public void processInput(String word){
@@ -55,12 +54,12 @@ public class TextUI implements IObserver {
                 controller.userBet(Integer.parseInt(word.substring(1)));
                 break;
             default:
-                logger.warning("Invalid command entered.");
+                LOG.warning("Invalid command entered.");
                 printCommands();
         }
     }
 
     private void printCommands() {
-        logger.warning("Blackjack commands: b[AMOUNT]=bet amount, d=double, s=stand, h=hit");
+        LOG.warning("Blackjack commands: b[AMOUNT]=bet amount, d=double, s=stand, h=hit");
     }
 }

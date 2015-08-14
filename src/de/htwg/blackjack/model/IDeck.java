@@ -4,7 +4,6 @@ package de.htwg.blackjack.model;
  * Created by ||USER|| on ||DATE||.
  */
 
-import java.util.List;
 
 public interface IDeck {
     /**

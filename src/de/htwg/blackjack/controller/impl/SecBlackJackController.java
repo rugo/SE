@@ -8,6 +8,7 @@ import de.htwg.blackjack.model.impl.Table;
 import de.htwg.blackjack.util.observer.Event;
 import de.htwg.blackjack.util.observer.Observable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,14 +24,14 @@ public class SecBlackJackController extends Observable implements IBlackJackCont
 
     private static final int AMOUNT_OF_DECKS = 8;
 
-    private final int BLACKJACK = 21;
+    private static final int BLACKJACK = 21;
 
     /**
      * This will be multiplied with the bet if the player wins.
      */
-    private final double WIN_FACTOR = 1.5;
+    private static final double WIN_FACTOR = 1.5;
 
-    private final static String CURRENCY_SIGN = "€";
+    private static final  String CURRENCY_SIGN = "€";
 
     private static final String NEWLINE = System.getProperty("line.separator");
 
@@ -108,7 +109,7 @@ public class SecBlackJackController extends Observable implements IBlackJackCont
     private void doubleBet(IPlayer player) {
         this.bet(player, this.table.getBet(player));
         this.hit(this.player);
-        this.stand(this.player);
+        this.stand();
     }
     private void hit(IPlayer player) {
         pullCard(player);
@@ -136,7 +137,7 @@ public class SecBlackJackController extends Observable implements IBlackJackCont
     @Override
     public void userStand() {
         this.player.setStatus(Status.STAND);
-        this.stand(this.player);
+        this.stand();
     }
 
     @Override
@@ -164,7 +165,7 @@ public class SecBlackJackController extends Observable implements IBlackJackCont
         }
     }
 
-    private void stand(IPlayer player) {
+    private void stand() {
         runDealer();
         notifyObservers();
         restartGame();
@@ -177,22 +178,22 @@ public class SecBlackJackController extends Observable implements IBlackJackCont
 
     @Override
     public int getPlayerValue() {
-        return 0;
+        return this.player.getCardsValue();
     }
 
     @Override
     public int getDealerValue() {
-        return 0;
+        return this.dealer.getCardsValue();
     }
 
     @Override
     public List<String> getUserCardImagePaths() {
-        return null;
+        return new ArrayList<String>();
     }
 
     @Override
     public List<String> getDealerCardImagePaths() {
-        return null;
+        return new ArrayList<String>();
     }
 
     private void payoutPlayer(IPlayer player, double factor) {

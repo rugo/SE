@@ -7,7 +7,6 @@ import java.util.*;
 /**
  * Created by ||USER|| on ||DATE||.
  */
-// TODO: Check parameters
 public final class Table implements ITable {
     private List<IDeck> decks;
     private final Map<IPlayer, Integer> bets;
