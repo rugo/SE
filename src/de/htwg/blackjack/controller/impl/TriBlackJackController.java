@@ -1,5 +1,6 @@
 package de.htwg.blackjack.controller.impl;
 
+import com.google.inject.Guice;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.model.*;
 import de.htwg.blackjack.model.impl.DeckFactory;

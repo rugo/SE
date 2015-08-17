@@ -1,8 +1,12 @@
 package de.htwg.blackjack.model;
 
 
+import com.google.inject.ImplementedBy;
+import de.htwg.blackjack.model.impl.Table;
+
 import java.util.List;
 
+@ImplementedBy(Table.class)
 public interface ITable {
     /**
      * Returns the amount of decks used on this table.

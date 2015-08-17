@@ -4,8 +4,12 @@ package de.htwg.blackjack.model;
  * Created by ||USER|| on ||DATE||.
  */
 
+import com.google.inject.ImplementedBy;
+import de.htwg.blackjack.model.impl.Player;
+
 import java.util.Map;
 
+@ImplementedBy(Player.class)
 public interface IPlayer {
     /**
      * Returns the players name.
