@@ -9,11 +9,13 @@ import de.htwg.blackjack.model.impl.Table;
 import de.htwg.blackjack.util.observer.Event;
 import de.htwg.blackjack.util.observer.Observable;
 
+import javax.inject.Singleton;
 import java.util.*;
 
 /**
  * Created by ||USER|| on ||DATE||.
  */
+@Singleton
 public class TriBlackJackController extends Observable implements IBlackJackController {
 
     private IPlayer dealer;

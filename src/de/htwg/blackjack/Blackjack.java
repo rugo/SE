@@ -22,12 +22,11 @@ public class Blackjack {
         Injector inject = Guice.createInjector(new BlackJackModule());
 
         controller = inject.getInstance(IBlackJackController.class);
-
-        TextUI ui = inject.getInstance(TextUI.class);
-
-        ui.loop();
+        TextUI tui = inject.getInstance(TextUI.class);
 
         controller.createGame("Hans", 10000);
+
+        tui.loop();
     }
 
 }
