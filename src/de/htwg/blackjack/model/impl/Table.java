@@ -12,7 +12,7 @@ public final class Table implements ITable {
     private final Map<IPlayer, Integer> bets;
 
 
-    public  Table(List<IDeck> decks, IPlayer... players) {
+    public Table(List<IDeck> decks, IPlayer... players) {
         this.bets = new HashMap<>();
 
         this.addPlayers(Arrays.asList(players));

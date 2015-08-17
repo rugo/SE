@@ -24,7 +24,7 @@ public class Blackjack {
         controller = inject.getInstance(IBlackJackController.class);
         TextUI tui = inject.getInstance(TextUI.class);
 
-        controller.createGame("Hans", 10000);
+        controller.createGame("Hans", 5000);
 
         tui.loop();
     }
