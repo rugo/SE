@@ -9,12 +9,10 @@ import java.util.List;
 public interface IRank {
 
     /**
-     * Returns the last digit of the HEX unicode position of the
-     * unicode block of playing cards.
-     * As documented here: https://en.wikipedia.org/wiki/Playing_cards_in_Unicode#Block
-     * @return Last HEX digit for unicode char of card.
+     * Returns the rank part of the filename to show in gui
+     * @return Rank part to show.
      */
-    int getUnicodeBlockPosition();
+    String getCardImageName();
 
     /**
      * Returns the name of the rank.

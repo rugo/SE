@@ -11,12 +11,12 @@ import java.util.List;
 public final class Rank implements IRank {
     private final String name;
     private final List<Integer> values;
-    private final int unicodeBlockPosition;
+    private final String cardImageName;
 
-    public Rank(String name, int unicodeBlockPosition, Integer... values) {
+    public Rank(String name, String cardImageName, Integer... values) {
         this.name = name;
+        this.cardImageName = cardImageName;
         this.values = Arrays.asList(values);
-        this.unicodeBlockPosition = unicodeBlockPosition;
     }
 
     @Override
@@ -24,9 +24,8 @@ public final class Rank implements IRank {
         return name;
     }
 
-    @Override
-    public int getUnicodeBlockPosition() {
-        return unicodeBlockPosition;
+    public String getCardImageName() {
+        return cardImageName;
     }
 
     @Override

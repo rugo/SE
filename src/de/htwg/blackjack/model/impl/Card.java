@@ -12,7 +12,6 @@ import java.util.List;
 public final class Card implements ICard {
     private final IColor color;
     private final IRank rank;
-    private static final int UNICODE_CARD_BASE = 0x1F000;
 
     public Card(IColor color, IRank rank) {
         this.color = color;
@@ -29,10 +28,8 @@ public final class Card implements ICard {
     }
 
     @Override
-    public char getUnicodeSymbol() {
-        return (char) (this.UNICODE_CARD_BASE +
-                this.getColor().getUnicodeBlockPosition() +
-                this.getRank().getUnicodeBlockPosition());
+    public String getImagePath() {
+        return this.color.getCardImageName() + this.rank.getCardImageName();
     }
 
     @Override

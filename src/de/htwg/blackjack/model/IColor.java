@@ -5,10 +5,8 @@ package de.htwg.blackjack.model;
  */
 public interface IColor {
     /**
-     * Returns the second last digit of the HEX unicode position of the
-     * unicode block of playing cards.
-     * As documented here: https://en.wikipedia.org/wiki/Playing_cards_in_Unicode#Block
-     * @return Second last HEX digit for unicode char of card.
+     * Returns the color part of the filename to show in gui
+     * @return Color part of file to show.
      */
-    int getUnicodeBlockPosition();
+    String getCardImageName();
 }

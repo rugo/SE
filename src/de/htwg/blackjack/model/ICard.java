@@ -20,10 +20,10 @@ public interface ICard {
     IRank getRank();
 
     /**
-     * Returns the unicode char of the card.
-     * @return UTF-16 character of the card.
+     * Returns the path to the image fil eof the card.
+     * @return path to the image file of the card.
      */
-    char getUnicodeSymbol();
+    String getImagePath();
 
     /**
      * Returns all possible values of the card.

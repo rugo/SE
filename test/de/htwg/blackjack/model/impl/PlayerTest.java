@@ -14,12 +14,12 @@ public class PlayerTest extends TestCase {
     public void setUp() {
         this.player = new Player("Andrea", 125);
         this.cards = new ICard[4];
-        IColor color = new Color("Schippe", 0);
+        IColor color = new Color("Schippe", "german_schippe");
 
-        this.cards[0] = new Card(color, new Rank("Bube", 0, 10));
-        this.cards[1] = new Card(color, new Rank("Dame", 0, 10));
-        this.cards[2] = new Card(color, new Rank("König", 0, 10));
-        this.cards[3] = new Card(color, new Rank("Ass", 0, 1, 11));
+        this.cards[0] = new Card(color, new Rank("Bube", "_bube", 0, 10));
+        this.cards[1] = new Card(color, new Rank("Dame", "_dame", 0, 10));
+        this.cards[2] = new Card(color, new Rank("König", "_koenig", 0, 10));
+        this.cards[3] = new Card(color, new Rank("Ass", "_ass", 0, 1, 11));
     }
 
     public void testGetStatus() throws Exception {

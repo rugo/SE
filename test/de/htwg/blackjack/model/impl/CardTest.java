@@ -7,8 +7,8 @@ import junit.framework.TestCase;
  */
 public class CardTest extends TestCase {
     // Card of a German deck
-    private Color color = new Color("Schippe", 0xA0);
-    private Rank rank = new Rank("Bube", 0xB, 10);
+    private Color color = new Color("Schippe", "german_schippe");
+    private Rank rank = new Rank("Bube", "bube", 0xB, 10);
     private Card card = new Card(color, rank);
 
     public void testToString() throws Exception {
@@ -24,8 +24,8 @@ public class CardTest extends TestCase {
 
     }
 
-    public void testGetUnicodeSymbol() throws Exception {
-        assertEquals(this.card.getUnicodeSymbol(), (char) 0x1F0AB);
+    public void testGetImagePath() throws Exception {
+        assertEquals(this.card.getImagePath(), "german_schippe_bube");
     }
 
     public void testGetValues() throws Exception {

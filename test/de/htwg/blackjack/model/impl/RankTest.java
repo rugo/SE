@@ -2,10 +2,6 @@ package de.htwg.blackjack.model.impl;
 
 import junit.framework.TestCase;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Created by ||USER|| on ||DATE||.
  */
@@ -14,7 +10,7 @@ public class RankTest extends TestCase {
     private Integer[] values = {1, 2, 3, 4};
 
     public void setUp(){
-        this.rank = new Rank("ASS", 0xE, values);
+        this.rank = new Rank("ASS", "ace_", values);
     }
 
     public void testGetName() throws Exception {
@@ -22,7 +18,7 @@ public class RankTest extends TestCase {
     }
 
     public void testGetUnicodeBlockPosition() throws Exception {
-        assertEquals(this.rank.getUnicodeBlockPosition(), 0xE);
+        assertEquals(this.rank.getCardImageName(), "ace_");
     }
 
     public void testGetValues() throws Exception {

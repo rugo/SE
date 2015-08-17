@@ -29,24 +29,25 @@ public class TableTest extends TestCase {
         this.players.add(this.hans);
         this.players.add(new Player("Jochen", 2000));
 
-        this.ranks.add(new Rank("Two", 2, 2));
-        this.ranks.add(new Rank("Three", 3, 3));
-        this.ranks.add(new Rank("Four", 4, 4));
-        this.ranks.add(new Rank("Five", 5, 5));
-        this.ranks.add(new Rank("Six", 6, 6));
-        this.ranks.add(new Rank("Seven", 7, 7));
-        this.ranks.add(new Rank("Eight", 8, 8));
-        this.ranks.add(new Rank("Nine", 9, 9));
-        this.ranks.add(new Rank("Ten", 10, 10));
-        this.ranks.add(new Rank("Jack", 0xB, 10));
-        this.ranks.add(new Rank("Queen", 0xD, 10));
-        this.ranks.add(new Rank("King", 0xE, 10));
-        this.ranks.add(new Rank("Ass", 11, 1, 11));
+        ranks.add(new Rank("Two", "two", 2, 2));
+        ranks.add(new Rank("Three", "three", 3, 3));
+        ranks.add(new Rank("Four", "four", 4, 4));
+        ranks.add(new Rank("Five", "five", 5, 5));
+        ranks.add(new Rank("Six", "six", 6, 6));
+        ranks.add(new Rank("Seven", "seven", 7, 7));
+        ranks.add(new Rank("Eight", "eight", 8, 8));
+        ranks.add(new Rank("Nine", "nine", 9, 9));
+        ranks.add(new Rank("Ten", "ten", 10, 10));
+        ranks.add(new Rank("Jack", "jack", 0xB, 10));
+        ranks.add(new Rank("Queen", "queen", 0xD, 10));
+        ranks.add(new Rank("King", "king", 0xE, 10));
+        ranks.add(new Rank("Ace", "ace", 11, 1, 11));
 
-        this.colors.add(new Color("SPADE", 0xA0));
-        this.colors.add(new Color("HEART", 0xB0));
-        this.colors.add(new Color("DIAMONDS", 0xC0));
-        this.colors.add(new Color("CLUBS", 0xD0));
+        colors.add(new Color("SPADES", "french_spades"));
+        colors.add(new Color("HEARTS", "french_hearts"));
+        colors.add(new Color("DIAMONDS", "french_diamonds"));
+        colors.add(new Color("CLUBS", "french_clubs"));
+
 
         IDeckFactory df = new DeckFactory();
         this.table = new Table(df.createFrenchDeck(8), this.dealer, this.hans);
@@ -80,9 +81,9 @@ public class TableTest extends TestCase {
     public void testGetNewCard() throws Exception {
         List<IColor> col = new ArrayList<>(1);
         List<IRank> ranks = new ArrayList<>(2);
-        col.add(new Color("Schippe", 0));
-        ranks.add(new Rank("Bube", 0, 10));
-        ranks.add(new Rank("Ass", 0, 11, 1));
+        col.add(new Color("Schippe", null));
+        ranks.add(new Rank("Bube", null, 0, 10));
+        ranks.add(new Rank("Ass", null, 0, 11, 1));
         IDeck deck = new Deck(ranks, col);
         List<IDeck> decks = new ArrayList<>();
         decks.add(deck);
