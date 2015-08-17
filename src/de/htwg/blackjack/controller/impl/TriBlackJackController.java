@@ -64,7 +64,7 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
 
     @Override
     public void createGame(String playerName, int playerMoney) {
-        this.player = new Player(playerName, playerMoney); // TODO: dep injection
+        this.player = new Player(playerName, playerMoney);
         this.dealer = new Player("Dealer", 0);
         this.table = new Table(deckFactory.createFrenchDeck(AMOUNT_OF_DECKS), this.dealer, this.player);
     }
