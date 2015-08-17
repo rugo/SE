@@ -6,7 +6,7 @@ import de.htwg.blackjack.util.observer.Event;
 import de.htwg.blackjack.util.observer.IObserver;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 /**
  * Created by ||USER|| on ||DATE||.
@@ -24,7 +24,7 @@ public class TextUI implements IObserver {
     @Override
     public void update(Event e) {
         if (e != null) {
-            LOG.warning(e.getMessage());
+            LOG.warn(e.getMessage());
         } else {
             LOG.info(this.controller.getTableInfoString());
         }
@@ -54,12 +54,12 @@ public class TextUI implements IObserver {
                 controller.userBet(Integer.parseInt(word.substring(1)));
                 break;
             default:
-                LOG.warning("Invalid command entered.");
+                LOG.warn("Invalid command entered.");
                 printCommands();
         }
     }
 
     private void printCommands() {
-        LOG.warning("Blackjack commands: b[AMOUNT]=bet amount, d=double, s=stand, h=hit");
+        LOG.warn("Blackjack commands: b[AMOUNT]=bet amount, d=double, s=stand, h=hit");
     }
 }
