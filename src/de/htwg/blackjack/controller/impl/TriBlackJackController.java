@@ -3,6 +3,7 @@ package de.htwg.blackjack.controller.impl;
 import com.google.inject.Guice;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.model.*;
+import de.htwg.blackjack.model.impl.Deck;
 import de.htwg.blackjack.model.impl.DeckFactory;
 import de.htwg.blackjack.model.impl.Player;
 import de.htwg.blackjack.model.impl.Table;
@@ -66,7 +67,11 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
     public void createGame(String playerName, int playerMoney) {
         this.player = new Player(playerName, playerMoney);
         this.dealer = new Player("Dealer", 0);
-        this.table = new Table(deckFactory.createFrenchDeck(AMOUNT_OF_DECKS), this.dealer, this.player);
+        this.setDecks(deckFactory.createFrenchDeck(AMOUNT_OF_DECKS));
+    }
+
+    public void setDecks(List<IDeck> decks) {
+        this.table = new Table(decks, this.dealer, this.player);
     }
 
     private void initGame() {
@@ -241,6 +246,11 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
             initGame();
             notifyObservers();
         }
+    }
+
+    @Override
+    public int getPlayerBet() {
+        return this.table.getBet(this.player);
     }
 
     private void doBet(int amount) {

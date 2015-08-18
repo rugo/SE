@@ -45,6 +45,12 @@ public interface IBlackJackController extends IObservable {
     void userBet(int amount);
 
     /**
+     * Amount the user put in the pot.
+     * @return Money in the pot.
+     */
+    int getPlayerBet();
+
+    /**
      * Get the value of the cards the player holds.
      * @return Sum of value of cards.
      */
