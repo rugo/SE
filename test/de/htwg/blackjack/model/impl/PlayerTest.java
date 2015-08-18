@@ -23,7 +23,7 @@ public class PlayerTest extends TestCase {
     }
 
     public void testGetStatus() throws Exception {
-        assertEquals(this.player.getStatus(), Status.READY);
+        assertEquals(this.player.getStatus(), Status.ENTERED);
     }
 
     public void testSetStatus() throws Exception {

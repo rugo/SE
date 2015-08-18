@@ -36,7 +36,9 @@ public class DeckFactory implements IDeckFactory {
         colors.add(new Color("DIAMONDS", "french_diamonds"));
         colors.add(new Color("CLUBS", "french_clubs"));
 
-        decks.add(new Deck(ranks, colors));
+        for (int i = 0; i < amount; i++) {
+            decks.add(new Deck(ranks, colors));
+        }
 
         return decks;
     }

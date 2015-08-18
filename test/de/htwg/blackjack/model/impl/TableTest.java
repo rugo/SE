@@ -27,7 +27,6 @@ public class TableTest extends TestCase {
         this.players.add(this.dealer);
         this.hans = new Player("Hans", 1500);
         this.players.add(this.hans);
-        this.players.add(new Player("Jochen", 2000));
 
         ranks.add(new Rank("Two", "two", 2, 2));
         ranks.add(new Rank("Three", "three", 3, 3));
@@ -63,12 +62,12 @@ public class TableTest extends TestCase {
         players.add(new Player("Luise", 50));
         players.add(new Player("Hanelore", 100));
         this.table.addPlayers(players);
-        assertEquals(this.table.getAmountOfPlayers(), 5);
+        assertEquals(this.table.getAmountOfPlayers(), 4);
     }
 
     public void testAddPlayer() throws Exception {
         this.table.addPlayer(new Player("Luise", 50));
-        assertEquals(this.table.getAmountOfPlayers(), 4);
+        assertEquals(this.table.getAmountOfPlayers(), 3);
     }
 
     public void testRemovePlayer() throws Exception {

@@ -12,6 +12,7 @@ import java.util.List;
 public final class Card implements ICard {
     private final IColor color;
     private final IRank rank;
+    private static final String fileDelimiter = "_";
 
     public Card(IColor color, IRank rank) {
         this.color = color;
@@ -29,7 +30,7 @@ public final class Card implements ICard {
 
     @Override
     public String getImagePath() {
-        return this.color.getCardImageName() + this.rank.getCardImageName();
+        return this.color.getCardImageName() + fileDelimiter + this.rank.getCardImageName();
     }
 
     @Override

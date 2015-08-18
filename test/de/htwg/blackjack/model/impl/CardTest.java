@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 public class CardTest extends TestCase {
     // Card of a German deck
     private Color color = new Color("Schippe", "german_schippe");
-    private Rank rank = new Rank("Bube", "bube", 0xB, 10);
+    private Rank rank = new Rank("Bube", "bube", 10);
     private Card card = new Card(color, rank);
 
     public void testToString() throws Exception {
