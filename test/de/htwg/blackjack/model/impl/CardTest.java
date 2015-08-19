@@ -7,9 +7,14 @@ import junit.framework.TestCase;
  */
 public class CardTest extends TestCase {
     // Card of a German deck
-    private Color color = new Color("Schippe", "german_schippe");
-    private Rank rank = new Rank("Bube", "bube", 10);
-    private Card card = new Card(color, rank);
+    private Color color = new Color("Schippe", "test_schippe");
+    private Rank rank = new Rank("Bube", "jokerpic", 10);
+    private Card card;
+
+    public void setUp() throws Exception {
+        super.setUp();
+        this.card = new Card(color, rank);
+    }
 
     public void testToString() throws Exception {
         assertEquals(this.card.toString(), "Schippe Bube");
@@ -25,7 +30,7 @@ public class CardTest extends TestCase {
     }
 
     public void testGetImagePath() throws Exception {
-        assertEquals(this.card.getImagePath(), "german_schippe_bube");
+        assertTrue(this.card.getImagePath().contains("jokerpic_of_test_schippe"));
     }
 
     public void testGetValues() throws Exception {

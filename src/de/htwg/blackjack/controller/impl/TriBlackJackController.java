@@ -27,7 +27,7 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
     private static final int AMOUNT_OF_DECKS = 8;
     private static final int BLACKJACK = 21;
     private static final double PLAYER_MONEY_WIN_FACTOR = 1.5;
-    private static final String CURRENCY_SIGN = "€";
+    public static final String CURRENCY_SIGN = "€";
     private static final String NEWLINE = System.getProperty("line.separator");
 
     /**

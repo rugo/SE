@@ -75,4 +75,33 @@ public class TriBlackJackControllerTest extends TestCase {
         this.con.userBet(12);
         assertEquals(this.con.getPlayerBet(), 12);
     }
+
+    public void testGetTableInfoString1() throws Exception {
+
+    }
+
+
+    public void testSetDecks() throws Exception {
+        this.con.setDecks(new DeckFactory().createTestDeck());
+        this.con.userBet(1);
+        this.con.userHit();
+    }
+
+    public void testGetUserCardImages() throws Exception {
+        this.con.userBet(1);
+        assertEquals(this.con.getUserCardImages().size(), 2);
+    }
+
+    public void testGetDealerCardImages() throws Exception {
+        this.con.userBet(1);
+        assertEquals(this.con.getDealerCardImages().size(), 1);
+    }
+
+    public void testGetPlayerName() throws Exception {
+        assertEquals(this.con.getPlayerName(), "Hans");
+    }
+
+    public void testGetPlayerMoneyString() throws Exception {
+        assertEquals(this.con.getPlayerMoneyString(), "100" + this.con.CURRENCY_SIGN);
+    }
 }
