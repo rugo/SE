@@ -5,24 +5,25 @@ import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.impl.TriBlackJackController;
 import de.htwg.blackjack.util.observer.Event;
 import de.htwg.blackjack.util.observer.IObserver;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.IOException;
 
 /**
  * BlackJack
  * Created by ||USER|| on ||DATE||.
  */
-public class BlackJackFrame extends JFrame implements IObserver, KeyListener {
-    private IBlackJackController controller;
+public class BlackJackFrame extends JFrame implements IObserver{
+    private transient IBlackJackController controller;
     private CardPanel dealerPanel;
     private CardPanel playerPanel;
     private CenterPanel centerPanel;
     private Color backgroundColor = new Color(0, 153, 0);
     private static final int DEF_USER_BET = 50;
+    private static final Logger LOG = Logger.getLogger("de.htwg.blackjack.aview.gui.blackjackframe");
 
     private class KeyDispatcher implements KeyEventDispatcher {
         IBlackJackController controller;
@@ -46,6 +47,9 @@ public class BlackJackFrame extends JFrame implements IObserver, KeyListener {
                         break;
                     case KeyEvent.VK_B:
                         this.controller.userBet(DEF_USER_BET);
+                        break;
+                    default:
+                        this.controller.notifyObservers(new Event("Illegal key, use d(double), h(hit) or s(stand)"));
                 }
             }
             return false;
@@ -57,7 +61,6 @@ public class BlackJackFrame extends JFrame implements IObserver, KeyListener {
         this.controller = controller;
         controller.addObserver(this);
         BorderLayout borderLayout = new BorderLayout();
-        this.addKeyListener(this);  // I'm my own key listener, bitch!
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
         manager.addKeyEventDispatcher(new KeyDispatcher(controller));
         this.setBackground(backgroundColor);
@@ -73,8 +76,8 @@ public class BlackJackFrame extends JFrame implements IObserver, KeyListener {
         BetPanel betPanel = new BetPanel(controller);
         betPanel.setBackground(backgroundColor);
 
-        this.add(centerPanel, borderLayout.CENTER);
-        this.add(betPanel, borderLayout.PAGE_END);
+        this.add(centerPanel, BorderLayout.CENTER);
+        this.add(betPanel, BorderLayout.PAGE_END);
 
         this.pack();
         this.setVisible(true);
@@ -91,37 +94,13 @@ public class BlackJackFrame extends JFrame implements IObserver, KeyListener {
             this.dealerPanel.setCardValue(this.controller.getDealerValue());
             this.playerPanel.setCardValue(this.controller.getPlayerValue());
             this.playerPanel.setMoney(this.controller.getPlayerMoneyString());
-        } catch (IOException e1) {
-            e1.printStackTrace();
+        } catch (IOException ex) {
+            LOG.error(ex);
         }
     }
 
     public static void main(String[] args) {
         BlackJackFrame f = new BlackJackFrame(new TriBlackJackController());
         f.setVisible(true);
-    }
-
-    @Override
-    public void keyTyped(KeyEvent keyEvent) {
-        switch (keyEvent.getKeyCode()){
-            case KeyEvent.VK_H:
-                this.controller.userHit();
-                break;
-            case KeyEvent.VK_D:
-                this.controller.userDouble();
-                break;
-            case KeyEvent.VK_S:
-                this.controller.userStand();
-        }
-    }
-
-    @Override
-    public void keyPressed(KeyEvent keyEvent) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent keyEvent) {
-
     }
 }

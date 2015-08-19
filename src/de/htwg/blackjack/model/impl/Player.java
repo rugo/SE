@@ -43,6 +43,7 @@ public final class Player implements IPlayer {
         return cards;
     }
 
+    @Override
     public String getCardsString() {
         StringBuilder sb = new StringBuilder();
         for (ICard card: this.cards.keySet()) {
@@ -80,6 +81,7 @@ public final class Player implements IPlayer {
         return this.money;
     }
 
+    @Override
     public void addMoney(int amount) {
         this.money += amount;
     }

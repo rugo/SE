@@ -1,9 +1,7 @@
 package de.htwg.blackjack.controller.impl;
 
-import com.google.inject.Guice;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.model.*;
-import de.htwg.blackjack.model.impl.Deck;
 import de.htwg.blackjack.model.impl.DeckFactory;
 import de.htwg.blackjack.model.impl.Player;
 import de.htwg.blackjack.model.impl.Table;
@@ -129,8 +127,8 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
     }
 
     /**
-     *
-     * @param player
+     * Pull new card with player.
+     * @param player Player that should pull the card.
      * @return true if round continues false if round is over
      */
     private boolean pullCard(IPlayer player) {

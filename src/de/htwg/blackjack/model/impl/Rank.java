@@ -24,6 +24,7 @@ public final class Rank implements IRank {
         return name;
     }
 
+    @Override
     public String getCardImageName() {
         return cardImageName;
     }

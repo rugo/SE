@@ -1,7 +1,6 @@
 package de.htwg.blackjack.aview.gui;
 
 import javax.swing.*;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -13,7 +12,7 @@ import java.util.ListIterator;
  */
 public class CenterPanel extends JPanel {
     private JLabel errorLabel;
-    private List<String> lastMessages;
+    private transient List<String> lastMessages;
     private static final int NUM_MSG_SHOWN = 3;
 
     public CenterPanel(CardPanel dealerPanel, CardPanel playerPanel) {
@@ -22,7 +21,7 @@ public class CenterPanel extends JPanel {
         this.lastMessages = new ArrayList<>();
 
         this.errorLabel = new JLabel("", SwingConstants.CENTER);
-        this.errorLabel.setAlignmentX(this.CENTER_ALIGNMENT);
+        this.errorLabel.setAlignmentX(JPanel.CENTER_ALIGNMENT);
 
         this.add(dealerPanel);
         this.add(this.errorLabel);

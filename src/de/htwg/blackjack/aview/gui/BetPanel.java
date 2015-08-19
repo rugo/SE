@@ -7,28 +7,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * BlackJack
  * Created by ||USER|| on ||DATE||.
  */
 public class BetPanel extends JPanel implements ActionListener {
-    private static final String chipsPath = "/resources/chip_images/";
-    private static final Integer[] chipVals = {5, 10, 25, 100};
-    private static final String chipFileExt = "_res.png";
-    private final IBlackJackController controller;
+    private static final String CHIPS_PATH = "/resources/chip_images/";
+    private static final Integer[] CHIP_VALS = {5, 10, 25, 100};
+    private static final String CHIP_FILE_EXT = "_res.png";
+    private transient IBlackJackController controller;
 
     public BetPanel(IBlackJackController controller) {
         this.controller = controller;
-        this.setBackground(Color.GREEN);
-        GridLayout grid = new GridLayout(1, chipVals.length);
 
-        for (Integer i: chipVals) {
+        for (Integer i: CHIP_VALS) {
             JButton but = new JButton();
             but.setName(i.toString());
-            but.setIcon(new ImageIcon(Blackjack.class.getResource(chipsPath + i + chipFileExt).getPath()));
+            but.setIcon(new ImageIcon(Blackjack.class.getResource(CHIPS_PATH + i + CHIP_FILE_EXT).getPath()));
             but.setOpaque(false);
             but.setFocusPainted(false);
             but.setBorderPainted(false);
@@ -40,6 +36,7 @@ public class BetPanel extends JPanel implements ActionListener {
         }
     }
 
+    @Override
     public Dimension getPreferredSize() {
         return new Dimension(100, 100);
     }

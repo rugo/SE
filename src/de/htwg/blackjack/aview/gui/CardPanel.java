@@ -34,7 +34,7 @@ public class CardPanel extends JPanel {
 
         this.add(nameLabel, labelPosition);
         drawPanel = new CardDrawPanel();
-        this.add(drawPanel, borderLayout.CENTER);
+        this.add(drawPanel, BorderLayout.CENTER);
     }
 
     public void setCardValue(int value) {
@@ -52,9 +52,9 @@ public class CardPanel extends JPanel {
     @Override
     public void setBackground(Color bg) {
         super.setBackground(bg);
-        try {
+        if (this.drawPanel != null) {
             this.drawPanel.setBackground(bg);  // Not yet initialized
-        } catch (NullPointerException ex) {}
+        }
     }
 
     protected void setImages(List<BufferedImage> images) {

@@ -24,6 +24,7 @@ public final class Table implements ITable {
         return this.decks.size();
     }
 
+    @Override
     public void addPlayers(List<IPlayer> players) {
         for (IPlayer player: players) {
             this.addPlayer(player);
@@ -61,11 +62,13 @@ public final class Table implements ITable {
         throw new IllegalStateException("No Cards left in the stack.");
     }
 
+    @Override
     public void placeBet(IPlayer player, Integer amount) {
         player.reduceMoney(amount);
         this.bets.put(player, this.bets.get(player) + amount);
     }
 
+    @Override
     public Integer getBet(IPlayer player) {
         return this.bets.get(player);
     }

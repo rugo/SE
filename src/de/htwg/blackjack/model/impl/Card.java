@@ -13,9 +13,9 @@ import java.util.List;
 public final class Card implements ICard {
     private final IColor color;
     private final IRank rank;
-    private static final String fileDelimiter = "_of_";
-    private static final String fileExtension = ".png";
-    private static final String imageBasePath = "/resources/card_images_res/";
+    private static final String FILE_DELIMITER = "_of_";
+    private static final String FILE_EXTENSION = ".png";
+    private static final String IMAGE_BASE_PATH = "/resources/card_images_res/";
 
     public Card(IColor color, IRank rank) {
         this.color = color;
@@ -34,8 +34,8 @@ public final class Card implements ICard {
     @Override
     public String getImagePath() {
         return Blackjack.class.getResource(
-                imageBasePath + this.rank.getCardImageName() + fileDelimiter + this.color.getCardImageName() +
-                fileExtension
+                IMAGE_BASE_PATH + this.rank.getCardImageName() + FILE_DELIMITER + this.color.getCardImageName() +
+                        FILE_EXTENSION
         ).getPath();
     }
 

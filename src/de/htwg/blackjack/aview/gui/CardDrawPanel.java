@@ -10,15 +10,16 @@ import java.util.List;
  * Created by ||USER|| on ||DATE||.
  */
 public class CardDrawPanel extends JPanel {
-    private List<BufferedImage> images;
+    private transient List<BufferedImage> images;
 
     public void setImages(List<BufferedImage> images) {
         this.images = images;
     }
 
+    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if (images == null || images.size() == 0) {
+        if (images == null || images.isEmpty()) {
             return;
         }
         int w = getWidth();
@@ -34,6 +35,7 @@ public class CardDrawPanel extends JPanel {
         }
     }
 
+    @Override
     public Dimension getPreferredSize() {
         return new Dimension(700, 400);
     }
