@@ -292,4 +292,9 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
     public String getPlayerName() {
         return this.player.getName();
     }
+
+    @Override
+    public String getPlayerMoneyString() {
+        return "" + this.player.getAmountOfMoney() + CURRENCY_SIGN;
+    }
 }

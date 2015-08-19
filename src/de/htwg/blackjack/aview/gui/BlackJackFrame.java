@@ -84,16 +84,15 @@ public class BlackJackFrame extends JFrame implements IObserver, KeyListener {
     public void update(Event e) {
         if (e != null) {
             this.centerPanel.setErrorMessage(e.getMessage());
-        } else {
-            this.centerPanel.clearErrorMessage();
-            try {
-                this.dealerPanel.setImages(this.controller.getDealerCardImages());
-                this.playerPanel.setImages(this.controller.getUserCardImages());
-                this.dealerPanel.setCardValue(this.controller.getDealerValue());
-                this.playerPanel.setCardValue(this.controller.getPlayerValue());
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+        }
+        try {
+            this.dealerPanel.setImages(this.controller.getDealerCardImages());
+            this.playerPanel.setImages(this.controller.getUserCardImages());
+            this.dealerPanel.setCardValue(this.controller.getDealerValue());
+            this.playerPanel.setCardValue(this.controller.getPlayerValue());
+            this.playerPanel.setMoney(this.controller.getPlayerMoneyString());
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
     }
 

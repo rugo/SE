@@ -45,6 +45,10 @@ public class CardPanel extends JPanel {
         this.nameLabel.setText(msg);
     }
 
+    public void setMoney(String money) {
+        this.nameLabel.setText("<html><center>" + this.nameLabel.getText() + "<br/>" + money + "</center></html>");
+    }
+
     @Override
     public void setBackground(Color bg) {
         super.setBackground(bg);

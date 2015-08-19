@@ -81,4 +81,10 @@ public interface IBlackJackController extends IObservable {
      * @return Players name.
      */
     String getPlayerName();
+
+    /**
+     * Returns the amount of money the player owns as string with currency.
+     * @return amount of money the player owns as string with currency.
+     */
+    String getPlayerMoneyString();
 }

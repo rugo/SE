@@ -42,8 +42,4 @@ public class CenterPanel extends JPanel {
         errorMessage += "</center></html>";
         this.errorLabel.setText(errorMessage);
     }
-
-    public void clearErrorMessage() {
-        this.setErrorMessage("");
-    }
 }
