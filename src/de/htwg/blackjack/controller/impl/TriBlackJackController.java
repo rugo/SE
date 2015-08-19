@@ -107,6 +107,7 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
     }
 
     private void doDouble() {
+        doBet(getPlayerBet());
         if (pullCard(this.player)){
             this.runDealer();
         }
