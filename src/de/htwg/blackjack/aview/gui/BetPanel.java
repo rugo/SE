@@ -1,5 +1,6 @@
 package de.htwg.blackjack.aview.gui;
 
+import de.htwg.blackjack.Blackjack;
 import de.htwg.blackjack.controller.IBlackJackController;
 
 import javax.swing.*;
@@ -14,7 +15,7 @@ import java.util.List;
  * Created by ||USER|| on ||DATE||.
  */
 public class BetPanel extends JPanel implements ActionListener {
-    private static final String chipsPath = "/home/gonzalez/IdeaProjects/BlackJack/ressources/chip_images/";
+    private static final String chipsPath = "/resources/chip_images/";
     private static final Integer[] chipVals = {5, 10, 25, 100};
     private static final String chipFileExt = "_res.png";
     private final IBlackJackController controller;
@@ -27,7 +28,7 @@ public class BetPanel extends JPanel implements ActionListener {
         for (Integer i: chipVals) {
             JButton but = new JButton();
             but.setName(i.toString());
-            but.setIcon(new ImageIcon(chipsPath + i + chipFileExt));
+            but.setIcon(new ImageIcon(Blackjack.class.getResource(chipsPath + i + chipFileExt).getPath()));
             but.setOpaque(false);
             but.setFocusPainted(false);
             but.setBorderPainted(false);
