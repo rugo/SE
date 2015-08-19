@@ -287,4 +287,9 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
     public List<BufferedImage> getDealerCardImages() throws IOException {
         return this.formList(this.dealer.getCards().keySet());
     }
+
+    @Override
+    public String getPlayerName() {
+        return this.player.getName();
+    }
 }

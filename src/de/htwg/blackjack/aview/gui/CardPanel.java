@@ -2,7 +2,7 @@ package de.htwg.blackjack.aview.gui;
 
 import javax.swing.*;
 
-import java.awt.GridBagConstraints;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
@@ -19,16 +19,30 @@ import java.util.List;
  */
 public class CardPanel extends JPanel {
     private CardDrawPanel drawPanel;
+    private JLabel nameLabel;
+    private String username;
 
-    public CardPanel() {
+    public CardPanel(String username, String labelPosition) {
+        this.username = username;
+        BorderLayout borderLayout = new BorderLayout();
+        this.setLayout(borderLayout);
 
-        GridBagConstraints gridBack = new GridBagConstraints();
-        gridBack.weightx = 1.;
-        gridBack.fill = GridBagConstraints.BOTH;
-        gridBack.gridwidth = GridBagConstraints.REMAINDER;
+        this.nameLabel = new JLabel();
+        this.setCardValue(0);
+        nameLabel.setVerticalAlignment(JLabel.BOTTOM);
+        nameLabel.setHorizontalAlignment(JLabel.CENTER);
 
+        this.add(nameLabel, labelPosition);
         drawPanel = new CardDrawPanel();
-        this.add(drawPanel);
+        this.add(drawPanel, borderLayout.CENTER);
+    }
+
+    public void setCardValue(int value) {
+        String msg = this.username + "s cards";
+        if (value > 0) {
+            msg += " (" + value + ")";
+        }
+        this.nameLabel.setText(msg);
     }
 
     protected void setImages(List<BufferedImage> images) {

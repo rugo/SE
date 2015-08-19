@@ -75,4 +75,10 @@ public interface IBlackJackController extends IObservable {
      * @return List of card images.
      */
     List<BufferedImage> getDealerCardImages() throws IOException;
+
+    /**
+     * Does exactly what the name says.
+     * @return Players name.
+     */
+    String getPlayerName();
 }
