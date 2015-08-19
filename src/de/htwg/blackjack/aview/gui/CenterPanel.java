@@ -15,10 +15,6 @@ public class CenterPanel extends JPanel {
     private JLabel errorLabel;
     private List<String> lastMessages;
     private static final int NUM_MSG_SHOWN = 3;
-    /**
-     * Messages get smaller by this factor, the "older" they get.
-     */
-    private static final double MSG_FACTOR_SMALLER = 2; // TODO: needed?
 
     public CenterPanel(CardPanel dealerPanel, CardPanel playerPanel) {
         BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -27,7 +23,7 @@ public class CenterPanel extends JPanel {
 
         this.errorLabel = new JLabel("", SwingConstants.CENTER);
         this.errorLabel.setAlignmentX(this.CENTER_ALIGNMENT);
-        this.errorLabel.setForeground(Color.RED);
+
         this.add(dealerPanel);
         this.add(this.errorLabel);
         this.add(playerPanel);

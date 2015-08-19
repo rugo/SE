@@ -45,6 +45,14 @@ public class CardPanel extends JPanel {
         this.nameLabel.setText(msg);
     }
 
+    @Override
+    public void setBackground(Color bg) {
+        super.setBackground(bg);
+        try {
+            this.drawPanel.setBackground(bg);  // Not yet initialized
+        } catch (NullPointerException ex) {}
+    }
+
     protected void setImages(List<BufferedImage> images) {
         this.drawPanel.setImages(images);
         this.drawPanel.repaint();

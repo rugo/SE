@@ -1,8 +1,7 @@
 package de.htwg.blackjack.aview.gui;
 
 import javax.swing.*;
-import java.awt.Graphics;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
