@@ -11,6 +11,9 @@ import de.htwg.blackjack.util.observer.Event;
 import de.htwg.blackjack.util.observer.Observable;
 
 import javax.inject.Singleton;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -268,12 +271,20 @@ public class TriBlackJackController extends Observable implements IBlackJackCont
     }
 
     @Override
-    public List<String> getUserCardImagePaths() {
-        return new ArrayList<>();
+    public List<BufferedImage> getUserCardImages() throws IOException {
+        return this.formList(this.player.getCards().keySet());
+    }
+
+    private List<BufferedImage> formList(Set<ICard> cards) throws IOException {
+        List<BufferedImage> l = new ArrayList<>();
+        for (ICard card: cards) {
+            l.add(javax.imageio.ImageIO.read(new File(card.getImagePath())));
+        }
+        return l;
     }
 
     @Override
-    public List<String> getDealerCardImagePaths() {
-        return new ArrayList<>();
+    public List<BufferedImage> getDealerCardImages() throws IOException {
+        return this.formList(this.dealer.getCards().keySet());
     }
 }

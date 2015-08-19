@@ -12,7 +12,9 @@ import java.util.List;
 public final class Card implements ICard {
     private final IColor color;
     private final IRank rank;
-    private static final String fileDelimiter = "_";
+    private static final String fileDelimiter = "_of_";
+    private static final String fileExtension = ".png";
+    private static final String imageBasePath = "/home/gonzalez/IdeaProjects/BlackJack/ressources/card_images_res/";
 
     public Card(IColor color, IRank rank) {
         this.color = color;
@@ -30,7 +32,8 @@ public final class Card implements ICard {
 
     @Override
     public String getImagePath() {
-        return this.color.getCardImageName() + fileDelimiter + this.rank.getCardImageName();
+        return imageBasePath + this.rank.getCardImageName() + fileDelimiter + this.color.getCardImageName() +
+                fileExtension;
     }
 
     @Override

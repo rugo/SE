@@ -2,6 +2,7 @@ package de.htwg.blackjack;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import de.htwg.blackjack.aview.gui.BlackJackFrame;
 import de.htwg.blackjack.aview.tui.TextUI;
 
 
@@ -23,6 +24,7 @@ public class Blackjack {
 
         controller = inject.getInstance(IBlackJackController.class);
         TextUI tui = inject.getInstance(TextUI.class);
+        BlackJackFrame gui = inject.getInstance(BlackJackFrame.class);
 
         controller.createGame("Hans", 5000);
 

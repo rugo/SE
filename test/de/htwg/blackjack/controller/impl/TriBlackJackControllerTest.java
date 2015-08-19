@@ -64,11 +64,11 @@ public class TriBlackJackControllerTest extends TestCase {
     }
 
     public void testGetUserCardImagePaths() throws Exception {
-        assertEquals(this.con.getUserCardImagePaths().size(), 0);
+        assertEquals(this.con.getUserCardImages().size(), 0);
     }
 
     public void testGetDealerCardImagePaths() throws Exception {
-        assertEquals(this.con.getDealerCardImagePaths().size(), 0);
+        assertEquals(this.con.getDealerCardImages().size(), 0);
     }
 
     public void testGetPlayerBet() throws Exception {

@@ -2,6 +2,8 @@ package de.htwg.blackjack.controller;
 
 import de.htwg.blackjack.util.observer.IObservable;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -63,14 +65,14 @@ public interface IBlackJackController extends IObservable {
     int getDealerValue();
 
     /**
-     * Gives the url of the cards images for the user.
-     * @return List of paths with card images.
+     * Gives the cards images for the user.
+     * @return List of card images.
      */
-    List<String> getUserCardImagePaths();
+    List<BufferedImage> getUserCardImages() throws IOException;
 
     /**
      * Same as getUserCardImagePaths but for the dealer.
-     * @return List of paths with card images.
+     * @return List of card images.
      */
-    List<String> getDealerCardImagePaths();
+    List<BufferedImage> getDealerCardImages() throws IOException;
 }
