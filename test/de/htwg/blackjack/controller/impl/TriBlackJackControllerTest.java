@@ -88,16 +88,6 @@ public class TriBlackJackControllerTest extends TestCase {
         this.con.userHit();
     }
 
-    public void testGetUserCardImages() throws Exception {
-        this.con.userBet(1);
-        assertEquals(this.con.getUserCardImages().size(), 2);
-    }
-
-    public void testGetDealerCardImages() throws Exception {
-        this.con.userBet(1);
-        assertEquals(this.con.getDealerCardImages().size(), 1);
-    }
-
     public void testGetPlayerName() throws Exception {
         assertEquals(this.con.getPlayerName(), "Hans");
     }
