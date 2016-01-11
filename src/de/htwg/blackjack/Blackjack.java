@@ -27,7 +27,7 @@ public class Blackjack {
         @SuppressWarnings("unused")
         BlackJackFrame gui = inject.getInstance(BlackJackFrame.class);
 
-        controller.createGame("Hans", 5000);
+        controller.createGame("Ruben", 5000);
 
         tui.loop();
     }

@@ -9,8 +9,6 @@ import de.htwg.blackjack.controller.IBlackJackController;
 public class BlackJackModule extends AbstractModule {
     @Override
     protected void configure() {
-
         bind(IBlackJackController.class).to(de.htwg.blackjack.controller.impl.TriBlackJackController.class);
-
     }
 }
