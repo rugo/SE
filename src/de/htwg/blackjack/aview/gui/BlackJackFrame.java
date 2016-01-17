@@ -60,7 +60,6 @@ public class BlackJackFrame extends JFrame implements IObserver{
     public BlackJackFrame(IBlackJackController controller) {
         this.controller = controller;
         controller.addObserver(this);
-        BorderLayout borderLayout = new BorderLayout();
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
         manager.addKeyEventDispatcher(new KeyDispatcher(controller));
         this.setBackground(backgroundColor);
